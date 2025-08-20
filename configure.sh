@@ -54,6 +54,10 @@ printf "splash = true\nipc = on" > $HOME/.config/hypr/hyprpaper.conf
 mkdir -p $HOME/.config/waybar/
 cp "$START_DIR"/waybar/* $HOME/.config/waybar -r
 
+#rofi
+mkdir -p .config/rofi
+cp "$START_DIR"/rofi/* $HOME/.config/rofi/ -r
+
 echo "Installing Oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 cp "$START_DIR"/zsh/.zshcr $HOME/.zshrc
