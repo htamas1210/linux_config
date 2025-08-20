@@ -25,7 +25,7 @@ sudo nano /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Installing hyprland and stuff for wm"
-sudo pacman -S hyprland yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick ttf-jetbrains-mono-nerd ghostty swaync brightnessctl wireplumber xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper xclip sddm rofi-wayland unzip make ripgrep fd neovim --needed --noconfirm
+sudo pacman -S hyprland hyprlock blueman network-manager-applet waybar yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick ttf-jetbrains-mono-nerd ttf-jetbrains-mono ghostty swaync brightnessctl wireplumber xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper xclip sddm rofi-wayland unzip make ripgrep fd neovim --needed --noconfirm
 yay -S xwaylandvideobridge --needed --noconfirm
 yay -S zen-browser-bin --needed --noconfirm
 
@@ -34,7 +34,7 @@ sudo systemctl enable sddm
 
 echo "Cloining kickstart nvim to nvim config location"
 git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
-sudo cp "$START_DIR"/init.lua $HOME/.config/nvim
+sudo cp "$START_DIR"/nvim/ $HOME/.config/nvim -r
 
 echo "Installing rust and go and bootdev cli"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -43,13 +43,12 @@ go install github.com/bootdotdev/bootdev@latest
 curl -sS https://webi.sh/gh | sh; source ~/.config/envman/PATH.env
 
 sudo mkdir -p $HOME/.config/hypr/
-sudo cp "$START_DIR"/hyprland.conf $HOME/.config/hypr/
+sudo cp "$START_DIR"/hypr/ $HOME/.config/hypr/ -r
 
 #hyprpaper and conf
 mkdir -p $HOME/Pictures/Wallpaper/ 
 git clone https://github.com/htamas1210/Wallpapers.git $HOME/Pictures/Wallpaper/
 printf "splash = true\nipc = on" > $HOME/.config/hypr/hyprpaper.conf 
-sudo cp "$START_DIR"/set_wallpaper.sh $HOME/.config/hypr/
 
 echo "Installing Oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
