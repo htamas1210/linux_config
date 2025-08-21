@@ -25,7 +25,7 @@ sudo nano /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Installing hyprland and stuff for wm"
-sudo pacman -S hyprland hyprlock blueman zsh-autosuggestions zsh-syntax-highlighting network-manager-applet waybar yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick ttf-jetbrains-mono-nerd ttf-jetbrains-mono ghostty swaync brightnessctl wireplumber xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper xclip sddm rofi-wayland unzip make ripgrep fd neovim --needed --noconfirm
+sudo pacman -S hyprland tmux hyprlock blueman zsh-autosuggestions zsh-syntax-highlighting network-manager-applet waybar yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick ttf-jetbrains-mono-nerd ttf-jetbrains-mono ghostty swaync brightnessctl wireplumber xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper xclip sddm rofi-wayland unzip make ripgrep fd neovim --needed --noconfirm
 yay -S xwaylandvideobridge --needed --noconfirm
 yay -S zen-browser-bin --needed --noconfirm
 
@@ -58,10 +58,15 @@ cp "$START_DIR"/waybar/* $HOME/.config/waybar -r
 mkdir -p .config/rofi
 cp "$START_DIR"/rofi/* $HOME/.config/rofi/ -r
 
+#apps
+yay -S jellifin-media-player youtube-dl-gui --needed --noconfirm
+sudo pacman -S steam nwg-displays calibre freecad obs-studio samba cmake feh --needed --noconfirm
+sudo pacman -S wine wine-gecko wine-mono winetricks --needed --noconfirm
+
 echo "Installing Oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 cp "$START_DIR"/zsh/.zshcr $HOME/.zshrc
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-wget https://raw.githubusercontent.com/zakaziko99/agnosterzak-ohmyzsh-theme/master/agnosterzak.zsh-theme
+#wget https://raw.githubusercontent.com/zakaziko99/agnosterzak-ohmyzsh-theme/master/agnosterzak.zsh-theme
 chsh -s $(which zsh)
