@@ -33,8 +33,7 @@ echo "Turining on sddm login manager"
 sudo systemctl enable sddm
 
 echo "Cloining kickstart nvim to nvim config location"
-git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
-cp "$START_DIR"/nvim/* $HOME/.config/nvim/ -r
+git clone https://github.com/htamas1210/kickstart-modular.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 
 echo "Installing rust and go and bootdev cli"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
