@@ -3,13 +3,17 @@ echo "$START_DIR"
 
 echo "Installing basic drivers and utilities"
 sudo pacman -Sy
-sudo pacman -S mesa sof-firmware zsh curl linux-firmware-marvell gcc man-db lib32-mesa openssh lib32-vulkan-intel vulkan-intel reflector power-profiles-daemon cpupower lib32-pipewire pipewire-audio pipewire-pulse pavucontrol git base base-devel xdg-user-dirs --needed --noconfirm
+sudo pacman -S mesa sof-firmware zsh curl linux-firmware-marvell gcc man-db lib32-mesa openssh reflector vulkan-radeon power-profiles-daemon cpupower lib32-pipewire pipewire-audio pipewire-pulse pavucontrol git base base-devel xdg-user-dirs --needed --noconfirm
+
+#create the user folders
+xdg-user-dirs-update
 
 cpu_vendor=$(lscpu | grep "Vendor ID" | awk '{print $3}')
 
 if [[ "$cpu_vendor" == "AuthenticAMD" ]]; then
     echo "Detected AMD CPU — installing amd-ucode..."
     sudo pacman -S amd-ucode --needed --noconfirm
+    sleep 3
 elif [[ "$cpu_vendor" == "GenuineIntel" ]]; then
     echo "Detected Intel CPU — installing intel-ucode..."
     sudo pacman -S intel-ucode --needed --noconfirm
@@ -34,16 +38,20 @@ sleep 2
 echo "Yay sync"
 yay -Sy
 
-echo "turning off grub timeout"
-sudo ./grub/grub.sh
-#sudo nano /etc/default/grub
-#sudo grub-mkconfig -o /boot/grub/grub.cfg
+#echo "turning off grub timeout"
+#sudo grub/grub.sh
+sleep 3
+sudo nano /etc/default/grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Installing hyprland and stuff for wm"
-sudo pacman -S hyprland lua51 luarocks tmux hyprlock npm nodejs bluez bluez-utils btop docker docker-compose gradle gst-plugin-pipewire gvfs-smb htop hyprshot blueman zsh-autosuggestions zsh-syntax-highlighting network-manager-applet waybar yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick ttf-jetbrains-mono-nerd ttf-jetbrains-mono ghostty swaync brightnessctl wireplumber xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper xclip sddm rofi-wayland unzip make ripgrep fd neovim dotnet-runtime dotnet-sdk aspnet-runtime jdk-openjdk openjdk-doc libpulse mono nano nemo networkmanager-openvpn nmap opencv openssl openvpn pipewire pipewire-alsa pipewire-jack vlc vlc-plugins-all wget curl zram-generator --needed --noconfirm
-yay -S xwaylandvideobridge --needed --noconfirm
+sudo pacman -S hyprland starship lua51 luarocks tmux hyprlock npm nodejs bluez bluez-utils btop docker docker-compose gradle gst-plugin-pipewire gvfs-smb htop hyprshot blueman network-manager-applet waybar yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick ttf-jetbrains-mono-nerd ttf-jetbrains-mono ghostty swaync brightnessctl wireplumber xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper xclip sddm rofi-wayland unzip make ripgrep fd neovim dotnet-runtime dotnet-sdk aspnet-runtime jdk-openjdk openjdk-doc libpulse mono nano nemo networkmanager-openvpn nmap opencv openssl openvpn pipewire pipewire-alsa pipewire-jack vlc vlc-plugins-all wget curl zram-generator --needed --noconfirm
+#yay -S xwaylandvideobridge --needed --noconfirm
 yay -S zen-browser-bin --needed --noconfirm
 yay -S visual-studio-bin unityhub --needed --noconfirm
+
+#.bashrc line for starship
+echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
 
 echo "Turining on sddm login manager"
 sudo systemctl enable sddm
@@ -78,7 +86,8 @@ yay -S jellifin-media-player youtube-dl-gui jetbrains-toolbox --needed --noconfi
 sudo pacman -S steam nwg-displays calibre freecad obs-studio samba cmake feh --needed --noconfirm
 sudo pacman -S wine wine-gecko wine-mono winetricks --needed --noconfirm
 
-echo "Installing Oh my zsh"
+#echo "Installing Oh my zsh"
+#sudo pacman -S --needed --noconfirm zsh-autosuggestions zsh-syntax-highlighting
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 #cp "$START_DIR"/zsh/.zshcr $HOME/.zshrc
 #git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
