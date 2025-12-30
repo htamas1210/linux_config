@@ -38,11 +38,13 @@ sleep 2
 echo "Yay sync"
 yay -Sy
 
-#echo "turning off grub timeout"
-#sudo grub/grub.sh
 sleep 3
-sudo nano /etc/default/grub
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+echo "turning off grub timeout"
+chmod 777 grub/grub.sh
+bash grub/grub.sh
+
+#sudo nano /etc/default/grub
+#sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Installing hyprland and stuff for wm"
 sudo pacman -S hyprland glow starship lua51 luarocks tmux hyprlock npm nodejs bluez bluez-utils btop docker docker-compose gradle gst-plugin-pipewire gvfs-smb htop hyprshot blueman network-manager-applet waybar yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick ttf-jetbrains-mono-nerd ttf-jetbrains-mono ghostty swaync brightnessctl wireplumber xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper xclip sddm rofi-wayland unzip make ripgrep fd neovim dotnet-runtime dotnet-sdk aspnet-runtime jdk-openjdk openjdk-doc libpulse mono nano nemo networkmanager-openvpn nmap opencv openssl openvpn pipewire pipewire-alsa pipewire-jack vlc vlc-plugins-all wget curl zram-generator --needed --noconfirm
