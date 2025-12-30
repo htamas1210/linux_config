@@ -40,8 +40,8 @@ yay -Sy
 
 sleep 3
 echo "turning off grub timeout"
-chmod 777 grub/grub.sh
-bash grub/grub.sh
+chmod 777 $START_DIR/grub/grub.sh
+bash $START_DIR/grub/grub.sh
 
 #sudo nano /etc/default/grub
 #sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -86,7 +86,7 @@ mkdir -p .config/rofi
 cp "$START_DIR"/rofi/* $HOME/.config/rofi/ -r
 
 #apps
-yay -S jellifin-media-player youtube-dl-gui jetbrains-toolbox sddm-silent-theme rustdesk --needed --noconfirm
+yay -S jellifin-media-player youtube-dl-gui jetbrains-toolbox sddm-silent-theme --needed --noconfirm
 yay -S --needed --noconfirm rpi-imager dirb wordlists
 
 echo "Setting up sddm silent theme"
@@ -100,6 +100,7 @@ sudo echo "    # Make sure these options are correct:
 
 sudo pacman -S steam nwg-displays calibre freecad obs-studio samba cmake feh --needed --noconfirm
 sudo pacman -S wine wine-gecko wine-mono winetricks --needed --noconfirm
+yay -S rustdesk --needed --noconfirm
 
 #echo "Installing Oh my zsh"
 #sudo pacman -S --needed --noconfirm zsh-autosuggestions zsh-syntax-highlighting
