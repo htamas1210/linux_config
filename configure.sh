@@ -46,9 +46,11 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Installing hyprland and stuff for wm"
 sudo pacman -S hyprland glow starship lua51 luarocks tmux hyprlock npm nodejs bluez bluez-utils btop docker docker-compose gradle gst-plugin-pipewire gvfs-smb htop hyprshot blueman network-manager-applet waybar yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick ttf-jetbrains-mono-nerd ttf-jetbrains-mono ghostty swaync brightnessctl wireplumber xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper xclip sddm rofi-wayland unzip make ripgrep fd neovim dotnet-runtime dotnet-sdk aspnet-runtime jdk-openjdk openjdk-doc libpulse mono nano nemo networkmanager-openvpn nmap opencv openssl openvpn pipewire pipewire-alsa pipewire-jack vlc vlc-plugins-all wget curl zram-generator --needed --noconfirm
+sudo pacman -S hyprcursor hyprgraphics hyprland hyprland-guiutils hyprland-qt-support hyprlang hyprlock hyprpaper hyprpolkitagent hyprpwcenter hyprqt6engine hyprqt6engine-debug hyprshot hyprtoolkit hyprutils hyprwayland-scanner hyprwire xdg-desktop-portal-hyprland --needed --noconfirm
+sudo pacman -S --needed --noconfirm baobab blender gnome-disk-utility gnome-text-editor libreoffice-fresh virtualbox virtualbox-guest-iso virtualbox-host-modules-arch bear clang gdb lazygit mariadb-clients mingw-w64-gcc openmpi podman python-pip raylib valgrind dos2unix rsync tree xboxdrv zip 
 #yay -S xwaylandvideobridge --needed --noconfirm
 yay -S zen-browser-bin --needed --noconfirm
-yay -S visual-studio-bin unityhub --needed --noconfirm
+yay -S unityhub --needed --noconfirm
 
 #.bashrc line for starship
 echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
@@ -82,7 +84,18 @@ mkdir -p .config/rofi
 cp "$START_DIR"/rofi/* $HOME/.config/rofi/ -r
 
 #apps
-yay -S jellifin-media-player youtube-dl-gui jetbrains-toolbox --needed --noconfirm
+yay -S jellifin-media-player youtube-dl-gui jetbrains-toolbox sddm-silent-theme rustdesk --needed --noconfirm
+yay -S --needed --noconfirm rpi-imager dirb wordlists
+
+echo "Setting up sddm silent theme"
+sudo echo "    # Make sure these options are correct:
+    [General]
+    InputMethod=qtvirtualkeyboard
+    GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/silent/components/,QT_IM_MODULE=qtvirtualkeyboard
+
+    [Theme]
+    Current=silent" > /etc/sddn.conf
+
 sudo pacman -S steam nwg-displays calibre freecad obs-studio samba cmake feh --needed --noconfirm
 sudo pacman -S wine wine-gecko wine-mono winetricks --needed --noconfirm
 
