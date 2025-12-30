@@ -9,7 +9,7 @@ if [[ -f "$GRUB_FILE" ]]; then
     # Replace or add the GRUB_TIMEOUT line
     if grep -q "^GRUB_TIMEOUT=" "$GRUB_FILE"; then
         # Modify existing line
-        sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' "$GRUB_FILE"
+        sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' "$GRUB_FILE"
     else
         # Add it if missing
         echo "GRUB_TIMEOUT=0" >> "$GRUB_FILE"
