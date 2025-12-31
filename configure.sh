@@ -98,6 +98,9 @@ sudo echo "    # Make sure these options are correct:
     [Theme]
     Current=silent" > /etc/sddn.conf
 
+#xbox controller fix
+echo 1 | sudo tee /sys/module/bluetooth/parameters/disable_ertm
+
 sudo pacman -S steam nwg-displays calibre freecad obs-studio samba cmake feh --needed --noconfirm
 sudo pacman -S wine wine-gecko wine-mono winetricks --needed --noconfirm
 yay -S rustdesk --needed --noconfirm
