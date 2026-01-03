@@ -43,7 +43,7 @@ avr-gcc 15.1.0-1
 avr-libc 2.3.0-1
 avrdude 1:8.1-1
 baobab 49.1-1
-base 3-2
+base 3-2 
 base-devel 1-2
 bash 5.3.9-1
 bear 3.1.6-10
