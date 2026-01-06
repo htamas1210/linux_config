@@ -3,7 +3,7 @@ echo "$START_DIR"
 
 echo "Installing basic drivers and utilities"
 sudo pacman -Sy
-sudo pacman -S mesa sof-firmware zsh curl linux-firmware-marvell gcc man-db lib32-mesa openssh reflector vulkan-radeon power-profiles-daemon cpupower lib32-pipewire pipewire-audio pipewire-pulse pavucontrol git base base-devel xdg-user-dirs --needed --noconfirm
+sudo pacman -S fakeroot debugedit mesa sof-firmware zsh curl linux-firmware-marvell gcc man-db lib32-mesa openssh reflector vulkan-radeon power-profiles-daemon cpupower lib32-pipewire pipewire-audio pipewire-pulse pavucontrol git base base-devel xdg-user-dirs --needed --noconfirm
 
 #create the user folders
 xdg-user-dirs-update
