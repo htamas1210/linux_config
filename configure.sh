@@ -60,8 +60,6 @@ echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
 echo "Turining on sddm login manager"
 sudo systemctl enable sddm
 
-echo "Cloining kickstart nvim to nvim config location"
-git clone http://rpiserver.ddns.net:3000/htamas1210/kickstart-modular.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 
 echo "Installing rust and go and bootdev cli"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -104,6 +102,9 @@ echo 1 | sudo tee /sys/module/bluetooth/parameters/disable_ertm
 sudo pacman -S steam nwg-displays calibre freecad obs-studio samba cmake feh --needed --noconfirm
 sudo pacman -S wine wine-gecko wine-mono winetricks --needed --noconfirm
 yay -S rustdesk --needed --noconfirm
+
+echo "Cloining kickstart nvim to nvim config location"
+git clone http://rpiserver.ddns.net:3000/htamas1210/kickstart-modular.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 
 #echo "Installing Oh my zsh"
 #sudo pacman -S --needed --noconfirm zsh-autosuggestions zsh-syntax-highlighting
