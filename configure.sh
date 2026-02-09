@@ -84,7 +84,7 @@ mkdir -p .config/rofi
 cp "$START_DIR"/rofi/* $HOME/.config/rofi/ -r
 
 #apps
-yay -S jellifin-media-player youtube-dl-gui jetbrains-toolbox sddm-silent-theme --needed --noconfirm
+yay -S jellyfin-media-player youtube-dl-gui jetbrains-toolbox sddm-silent-theme --needed --noconfirm
 yay -S --needed --noconfirm rpi-imager dirb wordlists
 
 echo "Setting up sddm silent theme"
