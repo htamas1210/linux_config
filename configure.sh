@@ -80,8 +80,11 @@ mkdir -p $HOME/.config/waybar/
 cp "$START_DIR"/waybar/* $HOME/.config/waybar -r
 
 #rofi
-mkdir -p .config/rofi
+mkdir -p $HOME/.config/rofi
 cp "$START_DIR"/rofi/* $HOME/.config/rofi/ -r
+
+mkdir -p $HOME/.config/ghostty
+cp "$START_DIR"/ghostty/* $HOME/.config/ghostty/
 
 #apps
 yay -S jellyfin-media-player youtube-dl-gui jetbrains-toolbox sddm-silent-theme --needed --noconfirm
