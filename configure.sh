@@ -47,20 +47,17 @@ bash $START_DIR/grub/grub.sh
 #sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Installing hyprland and stuff for wm"
-sudo pacman -S hyprland util-linux maven noto-fonts-emoji glow starship tree lazygit sdl3 sdl2 lua51 luarocks tmux hyprlock npm nodejs bluez bluez-utils btop docker docker-compose gradle gst-plugin-pipewire gvfs-smb htop hyprshot blueman network-manager-applet waybar yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick ttf-jetbrains-mono-nerd ttf-jetbrains-mono ghostty swaync brightnessctl wireplumber xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper xclip sddm rofi-wayland unzip make ripgrep fd neovim dotnet-runtime dotnet-sdk aspnet-runtime jdk-openjdk openjdk-doc libpulse mono nano nemo networkmanager-openvpn nmap opencv openssl openvpn pipewire pipewire-alsa pipewire-jack vlc vlc-plugins-all wget curl zram-generator --needed --noconfirm
+sudo pacman -S hyprland greetd-tuigreet util-linux maven noto-fonts-emoji glow starship tree lazygit sdl3 sdl2 lua51 luarocks tmux hyprlock npm nodejs bluez bluez-utils btop docker docker-compose gradle gst-plugin-pipewire gvfs-smb htop hyprshot blueman network-manager-applet waybar yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick ttf-jetbrains-mono-nerd ttf-jetbrains-mono ghostty swaync brightnessctl wireplumber xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper xclip  rofi-wayland unzip make ripgrep fd neovim dotnet-runtime dotnet-sdk aspnet-runtime jdk-openjdk openjdk-doc libpulse mono nano nemo networkmanager-openvpn nmap opencv openssl openvpn pipewire pipewire-alsa pipewire-jack vlc vlc-plugins-all wget curl zram-generator --needed --noconfirm
 sudo pacman -S hyprcursor hyprgraphics hyprland hyprland-guiutils hyprland-qt-support hyprlang hyprlock hyprpaper hyprpolkitagent hyprpwcenter hyprqt6engine hyprqt6engine-debug hyprshot hyprtoolkit hyprutils hyprwayland-scanner hyprwire xdg-desktop-portal-hyprland --needed --noconfirm
 sudo pacman -S --needed --noconfirm baobab blender gnome-disk-utility gnome-text-editor libreoffice-fresh virtualbox virtualbox-guest-iso virtualbox-host-modules-arch bear clang gdb lazygit mariadb-clients mingw-w64-gcc openmpi podman python-pip raylib valgrind dos2unix rsync tree xboxdrv zip 
 #yay -S xwaylandvideobridge --needed --noconfirm
 yay -S zen-browser-bin --needed --noconfirm
 yay -S unityhub --needed --noconfirm
 
-#.bashrc line for starship
-echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
+echo "Turining on login manager"
+sudo systemctl enable greetd.service
 
-echo "Turining on sddm login manager"
-sudo systemctl enable sddm
 sudo systemctl enable fstrim.timer #ssd trim weekly
-
 
 echo "Installing rust and go and bootdev cli"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -87,18 +84,12 @@ cp "$START_DIR"/rofi/* $HOME/.config/rofi/ -r
 mkdir -p $HOME/.config/ghostty
 cp "$START_DIR"/ghostty/* $HOME/.config/ghostty/
 
+mkdir -p $HOME/.config/alacritty/
+cp "$START_DIR"/alacritty/* $HOME/.config/alacritty/
+
 #apps
-yay -S jellyfin-media-player youtube-dl-gui jetbrains-toolbox sddm-silent-theme --needed --noconfirm
+yay -S jellyfin-media-player youtube-dl-gui jetbrains-toolbox --needed --noconfirm
 yay -S --needed --noconfirm rpi-imager dirb wordlists
-
-echo "Setting up sddm silent theme"
-sudo echo "    # Make sure these options are correct:
-    [General]
-    InputMethod=qtvirtualkeyboard
-    GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/silent/components/,QT_IM_MODULE=qtvirtualkeyboard
-
-    [Theme]
-    Current=silent" > /etc/sddn.conf
 
 #xbox controller fix
 echo 1 | sudo tee /sys/module/bluetooth/parameters/disable_ertm
@@ -109,12 +100,3 @@ yay -S rustdesk --needed --noconfirm
 
 echo "Cloining kickstart nvim to nvim config location"
 git clone http://rpiserver.ddns.net:3000/htamas1210/kickstart-modular.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
-
-#echo "Installing Oh my zsh"
-#sudo pacman -S --needed --noconfirm zsh-autosuggestions zsh-syntax-highlighting
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-#cp "$START_DIR"/zsh/.zshcr $HOME/.zshrc
-#git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-#git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-#wget https://raw.githubusercontent.com/zakaziko99/agnosterzak-ohmyzsh-theme/master/agnosterzak.zsh-theme
-#chsh -s $(which zsh)
