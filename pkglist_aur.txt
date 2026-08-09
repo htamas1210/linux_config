@@ -1,0 +1,6 @@
+bottles
+hyprqt6engine
+jetbrains-toolbox
+packettracer
+rustdesk-bin
+unityhub
