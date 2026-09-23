@@ -5,7 +5,7 @@ hl.config({
 		kb_layout = "hu",
 		kb_options = "caps:swapescape",
 		accel_profile = "flat",
-		natural_scroll = true,
+		natural_scroll = false,
 	},
 })
 
