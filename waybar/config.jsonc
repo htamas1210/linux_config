@@ -89,8 +89,8 @@
     },
     "custom/power": {
         "format": "<span color='#FF4040'>  </span>",
-        "on-click": "systemctl poweroff",
+        "on-click": "hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'",
         "tooltip": true,
-        "tooltip-format": "关机"
+        "tooltip-format": "Shutdown"
     }
 }
