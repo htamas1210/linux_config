@@ -6,6 +6,7 @@ hl.config({
 		kb_options = "caps:swapescape",
 		accel_profile = "flat",
 		natural_scroll = false,
+		numlock_by_default = true,
 	},
 })
 
